@@ -1,0 +1,14 @@
+# 의존성 디렉토리 by sukwon
+node_modules/
+
+# 로그 파일 by sukwon
+*.log
+npm-debug.log*
+
+# 환경 변수 파일 by sukwon
+.env
+.env.*
+
+# OS 생성 파일 by sukwon
+.DS_Store
+Thumbs.db
