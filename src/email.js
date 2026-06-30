@@ -14,14 +14,19 @@ export function extractEmails(users) {
 
 /**
  * 이메일 형식이 유효한지 검증한다.
- * 정규식 출처: WHATWG HTML Living Standard - "valid e-mail address" (RFC 5322의 의도적 부분 구현)
- * https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+ * 정규식 출처: regular-expressions.info "How to Find or Validate an Email Address"에서
+ * 제시하는 RFC 5322 권장(preferred) 문법 — 도메인부는 RFC 1035의 preferred name 문법을 따른다.
+ * https://www.regular-expressions.info/email.html
+ * (원문은 `\A...\z` POSIX 형식이라 JS용으로 `^...$`로 변환하고 대문자도 허용했다. by sukwon)
+ * 원문 권장 정규식:
+ *   \A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
+ *     @(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z
  * @param {unknown} email 검증할 값
  * @returns {boolean} 유효한 이메일 형식이면 true
  */
 export function isValidEmail(email) {
     if (typeof email !== 'string') return false;
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const emailRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
     return emailRegex.test(email);
 }
 

@@ -6,4 +6,3 @@ alwaysApply: true
 - JavaScript는 ES Modules(import/export) 문법만 사용한다.
 - 함수에는 항상 JSDoc 주석을 단다.
 - 외부 라이브러리 추가 시 먼저 이유를 설명한 뒤 동의를 구한다.
-- 주석 마지막에는 by sukwon 을 남긴다.
